@@ -1,24 +1,44 @@
-import java.util.*;
-public static void main(String[] args) {
-        Set<Book> bookSetByName = new HashSet<>();
-        bookSetByName.add(new Book("Book C", 300, "Author1", new Date()));
-        bookSetByName.add(new Book("Book A", 200, "Author2", new Date()));
-        bookSetByName.add(new Book("Book E", 400, "Author3", new Date()));
-        bookSetByName.add(new Book("Book D", 350, "Author4", new Date()));
-        bookSetByName.add(new Book("Book B", 250, "Author5", new Date()));
-  
-        for (Book book : bookSetByName) {
-            System.out.println(book);
+package BookProject;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Sorted alphabetically:");
+
+        Set<Book> books = new TreeSet<>();
+        books.add(new Book("God, Human, Animal, Machine", 116, "Meghan O'Gieblyn", "July 12, 2022"));
+        books.add(new Book("Genius Makers", 382, "Cade Metz", "March 16, 2021"));
+        books.add(new Book("System Design Interview", 320, "Alex Xu", "June 12, 2020"));
+        books.add(new Book("Designing Machine Learning Systems", 386, "Chip Huyen", "June 21, 2022"));
+        books.add(new Book("Deep Learning", 800, "Ian Goodfellow", "November 18, 2016"));
+
+        int count = 1;
+        for (Book i : books) {
+            System.out.print(count++ + " - ");
+            System.out.println(i.toString());
         }
 
-        Set<Book> bookSetByPageCount = new TreeSet<>(Comparator.comparingInt(Book::getPageCount));
-        bookSetByPageCount.add(new Book("Book C", 300, "Author1", new Date()));
-        bookSetByPageCount.add(new Book("Book A", 200, "Author2", new Date()));
-        bookSetByPageCount.add(new Book("Book E", 400, "Author3", new Date()));
-        bookSetByPageCount.add(new Book("Book D", 350, "Author4", new Date()));
-        bookSetByPageCount.add(new Book("Book B", 250, "Author5", new Date()));
+        System.out.println("Books Amount : " + (count-1));
+        System.out.println();
+        System.out.println("Sorted by number of pages:");
 
-        for (Book book : bookSetByPageCount) {
-            System.out.println(book);
+        Set<Book> books2 = new TreeSet<>(new OrderByNameComparator().reversed());
+        books2.add(new Book("God, Human, Animal, Machine", 116, "Meghan O'Gieblyn", "July 12, 2022"));
+        books2.add(new Book("Genius Makers", 382, "Cade Metz", "March 16, 2021"));
+        books2.add(new Book("System Design Interview", 320, "Alex Xu", "June 12, 2020"));
+        books2.add(new Book("Designing Machine Learning Systems", 386, "Chip Huyen", "June 21, 2022"));
+        books2.add(new Book("Deep Learning", 800, "Ian Goodfellow", "November 18, 2016"));
+
+        int count2 = 1;
+        for (Book i : books2) {
+            System.out.print(count2++ + " - ");
+            System.out.println(i.toString());
         }
+
+        System.out.println("Books Amount : " + (count2-1));
+
+
     }
+}
