@@ -1,10 +1,13 @@
-public class Book implements Comparable<Book> {
+package BookProject;
+
+class Book implements Comparable<Book> {
     private String bookName;
     private int pageCount;
     private String authorName;
-    private Date publicationDate;
+    private String publicationDate;
 
-    public Book(String bookName, int pageCount, String authorName, Date publicationDate) {
+
+    public Book(String bookName, int pageCount, String authorName, String publicationDate) {
         this.bookName = bookName;
         this.pageCount = pageCount;
         this.authorName = authorName;
@@ -23,7 +26,7 @@ public class Book implements Comparable<Book> {
         return authorName;
     }
 
-    public Date getPublicationDate() {
+    public String getPublicationDate() {
         return publicationDate;
     }
 
@@ -34,11 +37,10 @@ public class Book implements Comparable<Book> {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "bookName='" + bookName + '\'' +
-                ", pageCount=" + pageCount +
-                ", authorName='" + authorName + '\'' +
-                ", publicationDate=" + publicationDate +
-                '}';
+        return
+                "Book Name = '" + bookName + '\'' +
+                ", Page Count = " + pageCount +
+                ", Author Name = '" + authorName + '\'' +
+                ", Publication Date = '" + publicationDate + '\'';
     }
 }
